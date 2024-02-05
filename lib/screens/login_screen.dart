@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat_flutter/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -8,6 +11,19 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late String email;
+  late String password;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void login() async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Navigator.pushNamed(context, ChatScreen.id);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.emailAddress,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
@@ -40,8 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
+              textAlign: TextAlign.center,
+              obscureText: true,
               decoration: kTextFieldDecoration.copyWith(
                   hintText: 'Enter your password'),
             ),
@@ -56,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Implement login functionality.
+                    login();
                   },
                   minWidth: 200.0,
                   height: 42.0,
