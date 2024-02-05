@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "99992871308",
+    "project_id": "flash-chat-bec78",
+    "storage_bucket": "flash-chat-bec78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99992871308:android:86ee0a554a6f73ace736a9",
+        "android_client_info": {
+          "package_name": "com.obuntusolutions.flash_chat_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6wtWmY8oHBHZ080US5WJ0IV9GVIBN9Wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
